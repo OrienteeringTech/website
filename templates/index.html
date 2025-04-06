@@ -1,0 +1,15 @@
+﻿{{define "index"}}
+    {{template "layout" .}}
+{{end}}
+
+{{define "content"}}
+    {{template "hero" .Homepage}}
+
+    {{template "about-section" .Homepage}}
+
+    {{template "card-section" dict "Title" .Homepage.GoalsTitle "Cards" .Homepage.Goals "ClassName" "goals"}}
+
+    {{template "card-section" dict "Title" .Homepage.ProjectsTitle "Cards" .Homepage.Projects "ClassName" "projects"}}
+
+    {{template "footer" .Homepage}}
+{{end}}

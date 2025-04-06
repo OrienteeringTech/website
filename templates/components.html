@@ -1,0 +1,266 @@
+﻿{{define "contour-background"}}
+<div class="contour-background">
+    <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1000 1000"
+            preserveAspectRatio="xMidYMid slice"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointerEvents: none"
+    >
+        <rect width="1000" height="1000" fill="#F9F6F1" />
+
+        <!-- Left region hills - simplified for better mobile performance -->
+        <path
+                d="M50,350 C100,300 200,280 300,310 C400,340 450,420 430,500 C410,580 340,630 250,645 C160,660 70,610 40,520 C10,430 0,400 50,350 Z"
+                fill="none"
+                stroke="#E5DBC9"
+                strokeWidth="1.8"
+                opacity="0.4"
+                class="desktop-only"
+        />
+        <path
+                d="M80,380 C120,340 200,320 280,350 C360,380 400,440 380,510 C360,580 300,620 230,630 C160,640 90,600 65,520 C40,440 40,420 80,380 Z"
+                fill="none"
+                stroke="#E5DBC9"
+                strokeWidth="1.5"
+                opacity="0.3"
+        />
+        <path
+                d="M110,410 C140,380 200,360 260,380 C320,400 350,460 335,510 C320,560 270,590 215,600 C160,610 110,580 90,520 C70,460 80,440 110,410 Z"
+                fill="none"
+                stroke="#E5DBC9"
+                strokeWidth="1.5"
+                opacity="0.3"
+                class="desktop-only"
+        />
+        <path
+                d="M140,440 C160,420 200,405 240,420 C280,435 300,480 290,515 C280,550 245,570 205,575 C165,580 130,560 120,520 C110,480 120,460 140,440 Z"
+                fill="none"
+                stroke="#E5DBC9"
+                strokeWidth="1.2"
+                opacity="0.25"
+        />
+        <path
+                d="M170,470 C180,455 200,445 225,455 C250,465 260,490 255,510 C250,530 230,545 205,545 C180,545 155,535 150,510 C145,485 160,485 170,470 Z"
+                fill="none"
+                stroke="#E5DBC9"
+                strokeWidth="1"
+                opacity="0.2"
+        />
+
+        <!-- Ridge lines - essential for the map character -->
+        <path
+                d="M0,150 C100,120 200,140 300,110 C400,80 500,100 600,70 C700,40 800,60 900,30 C950,15 975,10 1000,5"
+                fill="none"
+                stroke="#E3D5BC"
+                strokeWidth="1.5"
+                opacity="0.35"
+        />
+        <path
+                d="M0,200 C100,170 200,190 300,160 C400,130 500,150 600,120 C700,90 800,110 900,80 C950,65 975,60 1000,55"
+                fill="none"
+                stroke="#E3D5BC"
+                strokeWidth="1.3"
+                opacity="0.3"
+                class="desktop-only"
+        />
+        <path
+                d="M0,250 C100,220 200,240 300,210 C400,180 500,200 600,170 C700,140 800,160 900,130 C950,115 975,110 1000,105"
+                fill="none"
+                stroke="#E3D5BC"
+                strokeWidth="1.2"
+                opacity="0.25"
+        />
+        <path
+                d="M0,300 C100,270 200,290 300,260 C400,230 500,250 600,220 C700,190 800,210 900,180 C950,165 975,160 1000,155"
+                fill="none"
+                stroke="#E3D5BC"
+                strokeWidth="1"
+                opacity="0.2"
+                class="desktop-only"
+        />
+
+        <!-- Right region valleys - reduced for mobile -->
+        <path
+                d="M600,400 C650,440 700,430 750,470 C800,510 850,500 900,540 C950,580 975,570 1000,590"
+                fill="none"
+                stroke="#E5DBC9"
+                strokeWidth="1.5"
+                opacity="0.35"
+        />
+        <path
+                d="M600,500 C650,540 700,530 750,570 C800,610 850,600 900,640 C950,680 975,670 1000,690"
+                fill="none"
+                stroke="#E5DBC9"
+                strokeWidth="1.2"
+                opacity="0.25"
+        />
+
+        <!-- Small depression contours - keeping the most visible ones -->
+        <path
+                d="M750,250 C780,220 830,210 880,225 C930,240 960,280 965,330 C970,380 950,420 910,445 C870,470 820,475 770,460 C720,445 690,405 680,355 C670,305 720,280 750,250 Z"
+                fill="none"
+                stroke="#E3D5BC"
+                strokeWidth="1.2"
+                opacity="0.3"
+        />
+        <path
+                d="M770,290 C790,270 820,260 850,270 C880,280 900,300 905,330 C910,360 895,385 870,400 C845,415 815,420 785,410 C755,400 735,375 730,345 C725,315 750,310 770,290 Z"
+                fill="none"
+                stroke="#E3D5BC"
+                strokeWidth="0.8"
+                opacity="0.2"
+        />
+
+        <!-- Lower region - simplified for mobile -->
+        <path
+                d="M100,680 C160,700 220,690 280,710 C340,730 400,720 460,740 C520,760 580,750 640,770"
+                fill="none"
+                stroke="#E5DBC9"
+                strokeWidth="1.2"
+                opacity="0.25"
+        />
+        <path
+                d="M60,800 C120,820 180,810 240,830 C300,850 360,840 420,860 C480,880 540,870 600,890"
+                fill="none"
+                stroke="#E5DBC9"
+                strokeWidth="0.8"
+                opacity="0.15"
+        />
+
+        <!-- Scattered contour fragments - keeping a few key ones -->
+        <path
+                d="M170,170 C190,165 210,168 230,165 C250,162 270,158 290,160"
+                fill="none"
+                stroke="#E3D5BC"
+                strokeWidth="0.9"
+                opacity="0.2"
+        />
+        <path
+                d="M650,370 C670,375 690,372 710,375 C730,378 750,380 770,377"
+                fill="none"
+                stroke="#E3D5BC"
+                strokeWidth="0.9"
+                opacity="0.2"
+        />
+
+        <!-- Additional contours - selected for good mobile/desktop balance -->
+        <!-- Extended ridge system -->
+        <path
+                d="M0,180 C80,165 150,175 230,150 C310,125 390,135 470,110 C550,85 630,95 710,70 C790,45 870,55 950,30 C975,20 985,15 1000,10"
+                fill="none"
+                stroke="#E3D5BC"
+                strokeWidth="1.1"
+                opacity="0.25"
+                class="desktop-only"
+        />
+
+        <!-- Nested valley in lower right -->
+        <path
+                d="M680,620 C720,650 760,640 800,670 C840,700 880,690 920,720 C960,750 980,740 1000,760"
+                fill="none"
+                stroke="#E5DBC9"
+                strokeWidth="1.1"
+                opacity="0.2"
+        />
+
+        <!-- Subtle elevation change in center -->
+        <path
+                d="M350,450 C400,440 450,445 500,435 C550,425 600,430 650,420"
+                fill="none"
+                stroke="#E3D5BC"
+                strokeWidth="0.7"
+                opacity="0.2"
+        />
+
+        <!-- Dashed contour lines - keeping only the most important ones -->
+        <!-- Dashed index contour -->
+        <path
+                d="M0,650 C100,620 200,640 300,610 C400,580 500,600 600,570 C700,540 800,560 900,530 C950,515 975,510 1000,505"
+                fill="none"
+                stroke="#E1D1B3"
+                strokeWidth="1.8"
+                opacity="0.4"
+                stroke-dasharray="8,4"
+        />
+
+        <!-- Dashed ridge line -->
+        <path
+                d="M0,225 C90,195 180,215 270,185 C360,155 450,175 540,145 C630,115 720,135 810,105 C855,90 900,85 1000,80"
+                fill="none"
+                stroke="#E3D5BC"
+                strokeWidth="1.2"
+                opacity="0.28"
+                stroke-dasharray="6,3"
+                class="desktop-only"
+        />
+
+        <!-- Dotted contour detail -->
+        <path
+                d="M420,780 C450,775 480,778 510,773 C540,768 570,771 600,766"
+                fill="none"
+                stroke="#E3D5BC"
+                strokeWidth="0.8"
+                opacity="0.2"
+                stroke-dasharray="1,3"
+        />
+
+        <!-- Small subtle dot details - only a few key ones -->
+        <circle cx="320" cy="520" r="1.2" fill="#E1D1B3" opacity="0.4"/>
+        <circle cx="580" cy="380" r="1.2" fill="#E1D1B3" opacity="0.4"/>
+        <circle cx="820" cy="570" r="1.2" fill="#E1D1B3" opacity="0.4"/>
+    </svg>
+</div>
+{{end}}
+
+{{define "hero"}}
+<header class="hero">
+    <div class="hero-content">
+        <h1>{{.Title}}</h1>
+        <p class="tagline">{{.Tagline}}</p>
+    </div>
+</header>
+{{end}}
+
+{{define "about-section"}}
+<section class="about">
+    <h2>{{.AboutTitle}}</h2>
+    <div class="about-content">
+        {{RenderPortableText .AboutContent}}
+    </div>
+</section>
+{{end}}
+
+{{define "card-section"}}
+<section class="{{.ClassName}}">
+    <h2>{{.Title}}</h2>
+    <div class="cards-grid">
+        {{range .Cards}}
+        {{template "card" .}}
+        {{end}}
+    </div>
+</section>
+{{end}}
+
+{{define "card"}}
+<div class="card">
+    <h3>{{.Title}}</h3>
+    {{RenderPortableText .Description}}
+</div>
+{{end}}
+
+{{define "footer"}}
+<footer>
+    {{template "social-links" .SocialLinks}}
+    <p>&copy; {{currentYear}} {{.Title}}</p>
+</footer>
+{{end}}
+
+{{define "social-links"}}
+<div class="social-icons">
+    {{range .}}
+    <a href="{{.URL}}" target="_blank" rel="noopener noreferrer" title="{{.Title}}" aria-label="{{.Title}}" class="social-icon">
+        {{GetIconSVG .Icon.Name 36}}
+    </a>
+    {{end}}
+</div>
+{{end}}

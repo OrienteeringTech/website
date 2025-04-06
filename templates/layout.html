@@ -1,0 +1,21 @@
+﻿{{define "layout"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Homepage.Title}}</title>
+    <meta name="description" content="{{.Homepage.Tagline}}">
+    <link rel="stylesheet" href="/static/css/global.css">
+</head>
+<body>
+<main class="sepia-page">
+    {{ template "contour-background" . }}
+
+    <div class="content">
+        {{ template "content" . }}
+    </div>
+</main>
+</body>
+</html>
+{{end}}
