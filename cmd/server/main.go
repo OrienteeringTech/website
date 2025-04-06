@@ -1,10 +1,13 @@
 package main
 
 import (
+	"bytes"
 	"html/template"
 	"log"
 	"net/http"
 	"os"
+	"regexp"
+	"strings"
 
 	"o-techcollaborative.org/website/internal/iconify"
 	"o-techcollaborative.org/website/internal/portabletext"
@@ -28,8 +31,10 @@ func main() {
 		log.Fatalf("Failed to parse templates: %v", err)
 	}
 
+	const cacheControlHeader = "public, max-age=86400" // 24 hours
+
 	fs := http.FileServer(http.Dir("static"))
-	http.Handle("/static/", http.StripPrefix("/static/", fs))
+	http.Handle("/static/", http.StripPrefix("/static/", addCacheControlHeader(fs, cacheControlHeader)))
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
@@ -37,7 +42,7 @@ func main() {
 			return
 		}
 
-		w.Header().Set("Cache-Control", "public, max-age=86400") // 24 hours
+		w.Header().Set("Cache-Control", cacheControlHeader)
 
 		homepage, err := sanityClient.FetchHomepage()
 		if err != nil {
@@ -50,9 +55,18 @@ func main() {
 			Homepage: homepage,
 		}
 
-		if err := tmpl.ExecuteTemplate(w, "index", data); err != nil {
+		buf := &bytes.Buffer{}
+		if err := tmpl.ExecuteTemplate(buf, "index", data); err != nil {
 			http.Error(w, "Failed to render template", http.StatusInternalServerError)
 			log.Printf("Error rendering template: %v", err)
+			return
+		}
+
+		minifiedHTML := minifyHTML(buf.String())
+
+		w.Header().Set("Content-Type", "text/html; charset=utf-8")
+		if _, err := w.Write([]byte(minifiedHTML)); err != nil {
+			log.Printf("Error writing response: %v", err)
 		}
 	})
 
@@ -65,4 +79,26 @@ func main() {
 	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		log.Fatalf("Failed to start server: %v", err)
 	}
+}
+
+func minifyHTML(html string) string {
+	commentRegex := regexp.MustCompile(`<!--[\s\S]*?-->`)
+	html = commentRegex.ReplaceAllString(html, "")
+
+	tagWhitespaceRegex := regexp.MustCompile(`>\s+<`)
+	html = tagWhitespaceRegex.ReplaceAllString(html, "><")
+
+	html = strings.TrimSpace(html)
+
+	whitespaceRegex := regexp.MustCompile(`\s{2,}`)
+	html = whitespaceRegex.ReplaceAllString(html, " ")
+
+	return html
+}
+
+func addCacheControlHeader(h http.Handler, cacheValue string) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Cache-Control", cacheValue)
+		h.ServeHTTP(w, r)
+	})
 }
