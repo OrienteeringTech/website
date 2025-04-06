@@ -1,3 +1,3 @@
-module o-techcollaborative.org/website
+module orientech.info/website
 
 go 1.24.0
