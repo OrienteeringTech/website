@@ -9,10 +9,10 @@ import (
 	"regexp"
 	"strings"
 
-	"o-techcollaborative.org/website/internal/iconify"
-	"o-techcollaborative.org/website/internal/portabletext"
-	"o-techcollaborative.org/website/internal/sanity"
-	"o-techcollaborative.org/website/internal/utils"
+	"orientech.info/website/internal/iconify"
+	"orientech.info/website/internal/portabletext"
+	"orientech.info/website/internal/sanity"
+	"orientech.info/website/internal/utils"
 )
 
 type PageData struct {
